@@ -7,6 +7,7 @@ interface Props {
   year: number;
   month: TMonth;
   date: number;
+  isOpenPicker: boolean;
   handlePickerOpen: (open: boolean) => void;
   handleInputChange: ({
     field,
@@ -21,11 +22,15 @@ const DateInput: FC<Props> = ({
   year,
   month,
   date,
+  isOpenPicker,
   handlePickerOpen,
   handleInputChange,
 }) => {
   return (
-    <div className={styles.container} onClick={() => handlePickerOpen(true)}>
+    <div
+      className={`${styles.container} ${isOpenPicker ? styles.open : ''}`}
+      onClick={() => handlePickerOpen(true)}
+    >
       <img
         src="https://img.icons8.com/ios/50/000000/calendar--v1.png"
         width="30"
@@ -41,7 +46,7 @@ const DateInput: FC<Props> = ({
         }
         value={getFormatYear(year)}
       />
-      -
+      <div className={styles.dash}> - </div>
       <input
         type="number"
         min="1"
@@ -53,7 +58,7 @@ const DateInput: FC<Props> = ({
         }
         value={getFormatMonth(month)}
       />
-      -
+      <div className={styles.dash}> - </div>
       <input
         type="number"
         min="1"

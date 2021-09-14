@@ -141,6 +141,7 @@ const Calendar: FC = () => {
         year={year}
         month={month}
         date={date}
+        isOpenPicker={isOpenPicker}
         handleInputChange={handleInputChange}
         handlePickerOpen={handlePickerOpen}
       />

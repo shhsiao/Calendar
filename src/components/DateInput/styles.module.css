@@ -5,6 +5,7 @@
   align-items: center;
   width: 150px;
   margin-bottom: 12px;
+  border-radius: 4px;
 }
 img {
   cursor: pointer;
@@ -25,4 +26,12 @@ input[type='number'] {
 input {
   width: 16px;
   border: 0;
+}
+
+.dash{
+  margin-bottom: 4px;
+}
+
+.open{
+  border-color: rgb(64, 153, 255);
 }

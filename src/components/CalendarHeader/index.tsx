@@ -29,7 +29,7 @@ const CalendarHeader: FC<Props> = ({
       to,
     };
   };
-
+  const showYear = () => (tempYear >= 100 ? tempYear : 'YYYY');
   return (
     <div className={styles.container}>
       <button
@@ -40,9 +40,9 @@ const CalendarHeader: FC<Props> = ({
       </button>
       <div className={styles.title} onClick={handleViewMode}>
         {viewMode === 'date'
-          ? `${Months[tempMonth]}  ${tempYear}`
+          ? `${Months[tempMonth] || 'MM'}  ${showYear()}`
           : viewMode === 'month'
-          ? tempYear
+          ? showYear()
           : `${getTempYearRange().from} - ${getTempYearRange().to}`}
       </div>
       <button className={styles.icon} onClick={() => handleBtnClick('next')}>

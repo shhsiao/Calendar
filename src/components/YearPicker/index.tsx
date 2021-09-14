@@ -8,9 +8,6 @@ interface Props {
 }
 
 const YearPicker: FC<Props> = ({ year, tempYear, handleCalendarClick }) => {
-  const isDisabled = (y: string) => {
-    return y.slice(0, 3) !== String(tempYear).slice(0, 3);
-  };
   const getYearList = () => {
     const from = Math.floor(tempYear / 10) * 10,
       to = from + 9;
@@ -18,9 +15,9 @@ const YearPicker: FC<Props> = ({ year, tempYear, handleCalendarClick }) => {
     for (let i = from - 1; i <= to + 1; i++) {
       list.push(
         <button
-          disabled={isDisabled(String(i))}
+          disabled={i < 100 || !(from <= i && i <= to)}
           key={i}
-          className={`${isDisabled(String(i)) ? 'disabled' : ''}
+          className={`${i >= 100 && from <= i && i <= to ? '' : 'disabled'}
             ${i === year ? 'selected' : ''} `}
           onClick={() => handleCalendarClick(new Date(String(i)))}
         >

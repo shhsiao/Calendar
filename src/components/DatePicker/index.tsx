@@ -41,6 +41,7 @@ const DatePicker: FC<Props> = ({
         }
         ${
           date &&
+          (month as number) !== -1 &&
           year >= 100 &&
           v.toDateString() === new Date(year, month, date).toDateString()
             ? 'selected'
